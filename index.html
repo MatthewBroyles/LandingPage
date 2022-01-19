@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/style.css'>
+    <title>LandingPage</title>
+</head>
+<body>
+    <div class='location'>
+        <div class='icontempcontainer'>
+        <img id='weather-icon' src='http://openweathermap.org/img/wn/50d@2x.png'/>
+        <p id='degree'>34</p>
+        </div>
+        <span id='location-timezone'>Timezone</span>
+    </div>
+    <button id='darkMode' title='Toggle Dark Mode'><i id="darkModeIcon" class="material-icons">light_mode</i></button>
+    <div id='timeContainer'>
+    <time id='time'>9:30:04 AM</time>
+    <h1>
+        <span id='greeting'>Good Afternoon</span>
+        <span id='name' contenteditable="true"></span>
+    </h1>
+
+    <h2>What Is Your Focus For Today?</h2>
+    <h2 id="focus" contenteditable="true"></h2>
+    </div>
+    <script src = '/index.js'></script>
+</body>
+</html>

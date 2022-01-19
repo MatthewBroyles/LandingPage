@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    color: black;
+    transition: background-image 1s ease-in-out;
+}
+
+
+
+#time {
+    font-size: 8rem;
+}
+
+h1{
+    margin-bottom: 3rem;
+}
+
+h2{
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+}
+
+@media(max-width: 700px){
+    #time{
+        font-size: 6rem;
+    }
+}
+
+#darkMode{
+    border-radius: 50%;
+    height: 2.2em;
+    width: 2.2em;
+    background-color: transparent;
+    border-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 5px;
+    margin-left: 5px;
+    
+}
+#darkModeIcon{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.location{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+}
+.icontempcontainer{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#degree {
+    
+    font-size: 4vh;
+}
+#weather-icon{
+    object-fit: cover;
+    height: 8vh;
+    width: 8vh;
+    padding-top: .25vh;
+}
