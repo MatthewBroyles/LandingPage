@@ -5,7 +5,7 @@ const time = document.getElementById('time'),
     darkModeIcon = document.getElementById('darkModeIcon'),
     darkMode = document.getElementById('darkMode'),
     degree = document.getElementById('degree');
-
+console.log('wtf is happening');
 var isDarkMode = false;
 
 function updateTime() {
