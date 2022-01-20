@@ -32,21 +32,21 @@ function setBackgroundTime() {
      hour = today.getHours();
 
     if(hour < 12){
-        document.body.style.backgroundImage = isDarkMode ? "url('/images/Sunrise1.jpg')" : "url('/images/Morning.jpg')"
+        document.body.style.backgroundImage = isDarkMode ? "url('./images/Sunrise1.jpg')" : "url('./images/Morning.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Morning';
         document.body.style.color = isDarkMode ? 'white' : 'black';
         darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
         darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
     } else if(hour < 18){
-        document.body.style.backgroundImage = isDarkMode ? "url('/images/Afternoon.jpg')" : "url('/images/Afternoon2.jpg')"
+        document.body.style.backgroundImage = isDarkMode ? "url('./images/Afternoon.jpg')" : "url('./images/Afternoon2.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Afternoon';
         document.body.style.color = isDarkMode ? 'white' : 'black';
         darkModeIcon.style.color = isDarkMode ? 'black' : 'white';
         darkMode.style.borderColor = isDarkMode ? 'black' : 'white';
     } else {
-        document.body.style.backgroundImage = isDarkMode ? "url('/images/DarkNight.jpg')" : "url('/images/Night.jpg')"
+        document.body.style.backgroundImage = isDarkMode ? "url('./images/DarkNight.jpg')" : "url('./images/Night.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Evening';
         document.body.style.color = isDarkMode ? 'white' : 'white';
