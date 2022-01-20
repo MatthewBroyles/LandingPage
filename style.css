@@ -98,9 +98,6 @@ h2{
     padding-top: .25vh;
 }
 
-#videorain{
-    opacity: 1;
-}
 video{
     position: fixed;
     top: 0%;
@@ -167,3 +164,11 @@ button{
   cursor: pointer;
   outline: none;
 }
+
+.todo-all-container{
+    position: fixed;
+    opacity: 0;
+    left: 0;
+    bottom: 0;
+}
+

@@ -25,7 +25,7 @@
 -->
     <div class='vid-container'>
         <video id='meditationvideo' loop>
-            <source src="./videos/RainyStreet.mp4" type='video/mp4' />
+            <source id='meditate' src="./videos/RainyStreet.mp4" type='video/mp4' />
         </video>
     </div>
     <div class="sound-picker">
@@ -36,12 +36,12 @@
         </div>
         <br/> 
         <br/>
-        <button data-sound="./sounds/Campfire.mp3" data-video="./videos/Campfire.mp4" ><i class="material-icons" id='campFire' >local_fire_department</i></button>
-        <button data-sound="./sounds/Forest.mp3" data-video="./videos/Forest.mp4" ><i class="material-icons" id='nature' >park</i></button>
-        <button data-sound="./sounds/Train.mp3" data-video="./videos/Train.mp4" ><i class="material-icons" id='train' >train</i></button>
+        <button data-sound="./sounds/Campfire.mp3" data-video="./videos/Campfire1.mp4" ><i class="material-icons" id='campFire' >local_fire_department</i></button>
+        <button data-sound="./sounds/Forest.mp3" data-video="./videos/Snow.mp4" ><i class="material-icons" id='nature' >park</i></button>
+        <button data-sound="./sounds/Train.mp3" data-video="./videos/Trains.mp4" ><i class="material-icons" id='train' >train</i></button>
         <button data-sound="./sounds/rain.mp3" data-video="./videos/RainyStreet.mp4" ><i class="material-icons" id='waterdrop' >water_drop</i></button>
         <button data-sound="./sounds/beach.mp3" data-video="./videos/waves_05.mp4"><i class="material-icons" id='beach'>beach_access</i></button>
-        <audio class="song">
+        <audio loop class="song">
             <source src="./sounds/rain.mp3" />
         </audio>
     </div>
@@ -64,6 +64,28 @@
 
     <h2>What Is Your Focus For Today?</h2>
     <h2 id="focus" contenteditable="true"></h2>
+    </div>
+    <div class="todo-all-container">
+    <form class='todo-form'>
+        <p class='alert'></p>
+        <h3>ToDo</h3>
+        <div class='form-control'>
+            <input type='text' id='todo' placeholder="placeholder" />
+            <button type='submit' class='submit-btn'>Add</button>
+        </div>
+    </form>
+    <div class='todo-container'>
+        <div class="todo-list">
+            <article class='todo-item'>
+                <p class='title'>item</p>
+                <div class='btn-container'>
+                    <button type="button" class='edit'>edit</button>
+                    <button type='button' class='delete'>delete</button>
+                </div>
+            </article>
+        </div>
+        <button type='button' class='clear-btn'>clear</button>
+    </div>
     </div>
     <script src = './index.js' onload="{console.log('wtf')}" type="text/javascript"></script>
 </body>

@@ -33,7 +33,7 @@ function setBackgroundTime() {
 
     if(hour < 12){
         console.log('./images/Sunrise1.jpg');
-        document.body.style.backgroundImage = isDarkMode ? "url('./images/Sunrise1.jpg')" : "url('./images/Morning.jpg')"
+        document.body.style.backgroundImage = isDarkMode ? "url('./images/Sunrise1.jpg')" : "url('./images/Sunrise3.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Morning';
         document.body.style.color = isDarkMode ? 'white' : 'black';
@@ -41,12 +41,12 @@ function setBackgroundTime() {
         darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
     } else if(hour < 18){
         console.log('./images/Sunrise1.jpg');
-        document.body.style.backgroundImage = isDarkMode ? "url('./images/Afternoon.jpg')" : "url('./images/Afternoon2.jpg')"
+        document.body.style.backgroundImage = isDarkMode ? "url('./images/Afternoon.jpg')" : "url('./images/Afternoon1.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Afternoon';
         document.body.style.color = isDarkMode ? 'white' : 'black';
-        darkModeIcon.style.color = isDarkMode ? 'black' : 'white';
-        darkMode.style.borderColor = isDarkMode ? 'black' : 'white';
+        darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
+        darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
     } else {
         console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/DarkNight.jpg')" : "url('./images/Night.jpg')"
@@ -243,6 +243,20 @@ const restartSong = song =>{
     console.log("ciao")
 }
 
+$('#meditationvideo').on('ended', function() {
+    video.currentTime = 0;
+    video.play();
+})
+console.log(document.getElementById('meditationvideo').currentTime);
+document.getElementById("meditationvideo").addEventListener('ended', () => {
+    console.log('restart');
+    document.getElementById("meditationvideo").currentTime = 0;
+    document.getElementById("meditationvideo").play();
+})
+
+
+
+
 $("#volume").slider({
     min: 0,
     max: 100,
@@ -253,9 +267,30 @@ $("#volume").slider({
     }
   });
 
-
+song.volume = 0;
 updateTime();
 setBackgroundTime();
 getDarkMode();
 getName();
 getFocus();
+
+const alert = document.querySelector('.alert'),
+ form = document.querySelector('.todo-form'),
+ todo = document.getElementById('todo'),
+ submitBtn = document.querySelector('.submit-btn'),
+ container = document.querySelector('.todo-container'),
+ list = document.querySelector('.todo-list'),
+ clearBtn = document.querySelector('.clear-btn');
+ 
+let editElement,
+ editFlag = false,
+ editID = '';
+
+ form.addEventListener('submit', addItem);
+
+ function addItem(e) {
+     e.preventDefault();
+     const value = todo.value;
+     const id = new Date().getTime().toString()
+     console.log(id);
+ }
