@@ -5,7 +5,7 @@ const time = document.getElementById('time'),
     darkModeIcon = document.getElementById('darkModeIcon'),
     darkMode = document.getElementById('darkMode'),
     degree = document.getElementById('degree');
-console.log('wtf is happening');
+
 var isDarkMode = false;
 
 function updateTime() {
@@ -32,6 +32,7 @@ function setBackgroundTime() {
      hour = today.getHours();
 
     if(hour < 12){
+        console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/Sunrise1.jpg')" : "url('./images/Morning.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Morning';
@@ -39,6 +40,7 @@ function setBackgroundTime() {
         darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
         darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
     } else if(hour < 18){
+        console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/Afternoon.jpg')" : "url('./images/Afternoon2.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Afternoon';
@@ -46,6 +48,7 @@ function setBackgroundTime() {
         darkModeIcon.style.color = isDarkMode ? 'black' : 'white';
         darkMode.style.borderColor = isDarkMode ? 'black' : 'white';
     } else {
+        console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/DarkNight.jpg')" : "url('./images/Night.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Evening';
@@ -127,8 +130,24 @@ let timeZone = 'N/A';
 function changeCF(){
     isTempF = !isTempF
     if(isTempF){
+     //   document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
+     //       "event": "command",
+     //       "func": "playVideo" 
+     //     }), '*');
+     //   document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
+     //       "event": "command",
+     //       "func": "unMute" 
+     //   }), '*');  
         degree.textContent = parseInt(tempF) + String.fromCharCode(176);
     } else{
+      //  document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
+      //      "event": "command",
+      //      "func": "pauseVideo" 
+      //    }), '*');
+      //  document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
+      //      "event": "command",
+      //      "func": "mute" 
+      //  }), '*');
         degree.textContent = parseInt(tempC) + String.fromCharCode(176);
     }
 }
@@ -179,14 +198,60 @@ window.addEventListener('load', ()=> {
 
     }
 });
+const video = document.querySelector(".vid-container video");
+const song = document.querySelector(".song");
+const sounds = document.querySelectorAll('.sound-picker button')
+var dataSound = "";
 
+sounds.forEach(sound => {
+    sound.addEventListener("click", function() {
+    console.log(song.src);
+    console.log(this.getAttribute("data-sound"));
+      if(dataSound == this.getAttribute("data-sound")){
+          checkPlaying(song);
 
+      } else {
+        if(isPlaying){
+            checkPlaying(song)
+        }
+      dataSound = this.getAttribute('data-sound');
+      song.src = this.getAttribute("data-sound");
+      video.src = this.getAttribute("data-video");
+      checkPlaying(song);
+      }
+    });
+  });
+var isPlaying = false;
 
+function checkPlaying (song) {
+    if(!isPlaying){
+        isPlaying = true;
+        song.play();
+        video.play();
+        video.style.opacity = '1';
+    } else {
+        isPlaying = false;
+        song.pause();
+        video.pause();
+        video.style.opacity = '0';
+    }
+}
 
+const restartSong = song =>{
+    let currentTime = song.currentTime;
+    song.currentTime = 0;
+    console.log("ciao")
+}
 
-
-
-
+$("#volume").slider({
+    min: 0,
+    max: 100,
+    value: 0,
+      range: "min",
+    slide: function(event, ui) {
+      song.volume = (ui.value / 100);
+    }
+  });
 
 
 updateTime();

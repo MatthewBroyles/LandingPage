@@ -40,6 +40,17 @@ h2{
         font-size: 6rem;
     }
 }
+@media(max-height: 450px){
+    .sound-picker{
+        opacity: 0;
+    }
+    
+}
+@media(max-height: 350px){
+    .location{
+        opacity: 0;
+    }
+}
 
 #darkMode{
     border-radius: 50%;
@@ -85,4 +96,74 @@ h2{
     height: 8vh;
     width: 8vh;
     padding-top: .25vh;
+}
+
+#videorain{
+    opacity: 1;
+}
+video{
+    position: fixed;
+    top: 0%;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    z-index: -10;
+    opacity: 0;
+}
+.sound-picker{
+    position: fixed;
+    height: 30vh;
+    top:0;
+    margin-top: 5px; 
+}
+button{
+    border-radius: 50%;
+}
+#player {
+	width: 18vw;
+	height: 1vh;
+	position: relative;
+	margin: 0 auto;
+	top: 15px;
+}
+#volume_up{
+    position: absolute;
+    margin-top: -10px;
+    margin-right: -8px;
+    right: 0;
+}
+#volume_down{
+    left: 0;
+    position: absolute;
+    margin-top: -10px;
+    margin-left: -8px;
+}
+#volume {
+	position: absolute;
+	left: 24px;
+	margin: 0 auto;
+	height: 5px;
+	width: 15vw;
+	background: #555;
+	border-radius: 15px;	
+}
+#volume .ui-slider-range-min {
+    height: 4vh;
+    width: 30vw;
+    position: absolute;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+#volume .ui-slider-handle {
+    width: 20px;
+  height: 20px;
+    border-radius: 20px;
+  background: #FFF;
+  position: absolute;
+  margin-left: -8px;
+  margin-top: -8px;
+  cursor: pointer;
+  outline: none;
 }
