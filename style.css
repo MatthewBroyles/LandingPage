@@ -126,6 +126,9 @@ video{
     z-index: -10;
     opacity: 0;
 }
+#meditationvideo1{
+    z-index: -11;
+}
 .sound-picker{
     position: fixed;
     height: 30vh;

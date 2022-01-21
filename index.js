@@ -185,27 +185,58 @@ window.addEventListener('load', ()=> {
     } else{
 
     }
+    console.log('preloading');
+    preloadImage('./images/Afternoon.jpg');
+    preloadImage('./images/Afternoon1.jpg');
+    preloadImage('./images/Afternoon2.jpg');
+    preloadImage('./images/DarkNight.jpg');
+    preloadImage('./images/Morning.jpg');
+    preloadImage('./images/Night.jpg');
+    preloadImage('./images/Night2.jpg');
+    preloadImage('./images/Sunrise.jpg');
+    preloadImage('./images/Sunrise1.jpg');
+    preloadImage('./images/Sunrise2.jpg');
+    preloadImage('./images/Sunrise3.jpg');
+    console.log('preloading done');
 });
-const video = document.querySelector(".vid-container video");
+
+const video = document.querySelector(".vid-container #meditationvideo");
 const song = document.querySelector(".song");
 const sounds = document.querySelectorAll('.sound-picker button')
 var dataSound = "";
 
+function preloadImage(url){
+    var img = new Image();
+    img.src = url;
+}
+
+
+
 sounds.forEach(sound => {
     sound.addEventListener("click", function() {
-    console.log(song.src);
-    console.log(this.getAttribute("data-sound"));
+
       if(dataSound == this.getAttribute("data-sound")){
           checkPlaying(song);
 
       } else {
         if(isPlaying){
-            checkPlaying(song)
-        }
-      dataSound = this.getAttribute('data-sound');
-      song.src = this.getAttribute("data-sound");
-      video.src = this.getAttribute("data-video");
-      checkPlaying(song);
+            console.log('delay?');
+            console.log(isPlaying)
+            checkPlaying(song);
+            setTimeout(() => {
+                dataSound = this.getAttribute('data-sound');
+                song.src = this.getAttribute("data-sound");
+                video.src = this.getAttribute("data-video");
+            }, 400)
+            setTimeout(checkPlaying,500,song);
+            console.log(this);
+        } else{
+            dataSound = this.getAttribute('data-sound');
+            song.src = this.getAttribute("data-sound");
+            video.src = this.getAttribute("data-video");
+            checkPlaying(song);
+            console.log(this);
+    }
       }
     });
   });
