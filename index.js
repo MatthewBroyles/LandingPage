@@ -39,34 +39,27 @@ function setBackgroundTime() {
         document.body.style.backgroundImage = isDarkMode ? "url('./images/Sunrise1.jpg')" : "url('./images/Sunrise3.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Morning';
-        document.body.style.color = isDarkMode ? 'white' : 'black';
-        darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
-        darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
-        visibilityIcon.style.color = isDarkMode ? 'white' : 'black';
-        sideBarIcon.style.borderColor = isDarkMode ? 'white' : 'black';
     } else if(hour < 18){
         document.title = "Good Afternoon ☀️";
         console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/Afternoon.jpg')" : "url('./images/Afternoon1.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Afternoon';
-        document.body.style.color = isDarkMode ? 'white' : 'black';
-        darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
-        darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
-        visibilityIcon.style.color = isDarkMode ? 'white' : 'black';
-        sideBarIcon.style.borderColor = isDarkMode ? 'white' : 'black';
     } else {
         document.title = "Good Night 🌙";
         console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/DarkNight.jpg')" : "url('./images/Night.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
         greeting.textContent = 'Good Evening';
-        document.body.style.color = isDarkMode ? 'white' : 'white';
-        darkModeIcon.style.color = isDarkMode ? 'white' : 'white';
-        darkMode.style.borderColor = isDarkMode ? 'white' : 'white';
-        visibilityIcon.style.color = isDarkMode ? 'white' : 'white';
-        sideBarIcon.style.borderColor = isDarkMode ? 'white' : 'white';
     }
+        document.getElementById('time').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('h1').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('h2').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('focus').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('degree').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('location-timezone').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('volume_up').style.color = isDarkMode ? 'white' : 'black';
+        document.getElementById('volume_down').style.color = isDarkMode ? 'white' : 'black';
 }
 
 function getName() {
@@ -402,7 +395,9 @@ function getLocalStorage(){
     message.style.fontSize = '20px';
     deleteBtn.style.width = '10%';
     editBtn.style.width = '10%';
-    
+    deleteBtn.style.cursor = 'pointer';
+    editBtn.style.cursor = 'pointer';
+    message.style.color = 'white';
     deleteBtn.style.float = 'right';
     editBtn.style.float = 'right';
 

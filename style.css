@@ -63,6 +63,7 @@ h2{
     left: 0;
     margin-top: 5px;
     margin-left: 5px;  
+    border-color: white;
 }
 #sideBarIcon{
     border-radius: 50%;
@@ -75,13 +76,16 @@ h2{
     left: 0;
     margin-top: 5px;
     margin-left: 5px;  
+    border-color: white;
 }
+
 #darkModeIcon{
     height: 100%;
     width: 100%;
     text-align: center;
     margin: 0;
     padding: 0;
+    color: white;
 }
 .location{
     position: fixed;
@@ -101,6 +105,9 @@ h2{
 #degree {
     
     font-size: 4vh;
+}
+#visibilityIcon{
+    color: white;
 }
 #weather-icon{
     object-fit: cover;
@@ -185,8 +192,8 @@ video{
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 0; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    padding-top: 0; 
+    transition: 0.4s; 
     opacity: .5;
   }
   
@@ -216,22 +223,31 @@ video{
     
     outline: 2px solid white;
 }
+#textSubmit{
+    display: flex;
+    grid-template-columns: 8fr 1fr;
+    gap: 0px 0px;
+    justify-content: stretch;
+    justify-items: start;
+}
   #todo{
       font-size: 15px;
       margin: 0;
       padding: 0;
-      width: 91%;
+      width: 80%;
       background-color: transparent;
       outline: 0;
       height: 100%;
       color: white;
   }
   #sub{
-      font-size: 25px;
+      font-size: 100%;
       margin: 0;
       padding: 0;
-      width: 35%;
+      width: 20%;
+      cursor: pointer;
+      color: white;
   }
-  .todo-list{
-    
+  #ToDoHeader{
+      color: white;
   }
