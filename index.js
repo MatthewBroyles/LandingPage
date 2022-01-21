@@ -426,15 +426,15 @@ function changeSideBar() {
     }
   }
 let todoHeader = localStorage.getItem('header') ? localStorage.getItem('header') : "ToDo";
-document.getElementById('ToDoHeader').innerHTML = todoHeader;
+document.getElementById('ToDoHeader').innerHTML = todoHeader == 'ToDo' ? '🗒️ToDo✏️' : '🌟Goals🌟';
 function toggleHeader(){
     if(todoHeader === 'ToDo'){
         todoHeader = 'Goals';
-        document.getElementById('ToDoHeader').innerHTML = 'Goals';
+        document.getElementById('ToDoHeader').innerHTML = '🌟Goals🌟';
         localStorage.setItem('header' , 'Goals');
     } else{
         todoHeader = 'ToDo';
-        document.getElementById('ToDoHeader').innerHTML = 'ToDo';
+        document.getElementById('ToDoHeader').innerHTML = '🗒️ToDo✏️';
         localStorage.setItem('header' , 'ToDo');
     }
 }
