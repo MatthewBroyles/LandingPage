@@ -12,17 +12,40 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='./style.css'>
-    <title>LandingPage</title>
+    <title>__________🚗__________<img src="./MyIcon.ico" height="40px" width="auto" style="float:right"></title>
+
 </head>
 <body>
-<!--    
-    <div id="videorain" style="position: fixed; z-index: -99; width: 100%; height: 100%">
-        <iframe id='youtube-video' width="100%" allow:='autoplay;' height="100%" src="https://www.youtube.com/embed/videoseries?controls=0&enablejsapi=1&autoplay=1&mute=1&amp;list=PLSuxJGzXBlyXqK82pfBhwjVU4VGo8q7Wx" frameborder="0" allowfullscreen></iframe>
-    -->
-      <!--  <iframe width="100%" height="100%" src="https://www.youtube.com/embed/x7SQaDTSrVg?enablejsapi=1" frameborder="0" ></iframe>
-         
+
+    <div id="mySidenav" class="sidenav">
+        <button id='sideBarIcon' title='Toggle Side Bar' onclick="changeSideBar()"><i id="visibilityIcon" class="material-icons">visibility_off</i></button>
+        <button id='darkMode' title='Toggle Dark Mode'><i id="darkModeIcon" class="material-icons">light_mode</i></button>
+
+        <div class="todo-all-container">
+            <form class='todo-form'>
+                <h3 id='ToDoHeader' onclick="toggleHeader()"></h3>
+                <div class='form-control' id='textSubmit'>
+                    <input type='text' id='todo' placeholder="placeholder" />
+                    <span type='submit' class='submit-btn' id='sub'>Add</span>
+                </div>
+            </form>
+            <div class='todo-container'>
+                <div class="todo-list">
+        <!--            <article class='todo-item'>
+                        <p class='title'>item</p>
+                        <div class='btn-container'>
+                            <button type="button" class='edit'>edit</button>
+                            <button type='button' class='delete'>delete</button>
+                        </div>
+                    </article>
+                -->        </div>
+                <span class='clear-btn'>clear</span>
+            </div>
+        </div>
+
     </div>
--->
+      
+
     <div class='vid-container'>
         <video id='meditationvideo' loop>
             <source id='meditate' src="./videos/RainyStreet.mp4" type='video/mp4' />
@@ -54,7 +77,6 @@
         </div>
         <span id='location-timezone'>Timezone</span>
     </div>
-    <button id='darkMode' title='Toggle Dark Mode'><i id="darkModeIcon" class="material-icons">light_mode</i></button>
     <div id='timeContainer'>
     <time id='time'>9:30:04 AM</time>
     <h1>
@@ -65,28 +87,7 @@
     <h2>What Is Your Focus For Today?</h2>
     <h2 id="focus" contenteditable="true"></h2>
     </div>
-    <div class="todo-all-container">
-    <form class='todo-form'>
-        <p class='alert'></p>
-        <h3>ToDo</h3>
-        <div class='form-control'>
-            <input type='text' id='todo' placeholder="placeholder" />
-            <button type='submit' class='submit-btn'>Add</button>
-        </div>
-    </form>
-    <div class='todo-container'>
-        <div class="todo-list">
-            <article class='todo-item'>
-                <p class='title'>item</p>
-                <div class='btn-container'>
-                    <button type="button" class='edit'>edit</button>
-                    <button type='button' class='delete'>delete</button>
-                </div>
-            </article>
-        </div>
-        <button type='button' class='clear-btn'>clear</button>
-    </div>
-    </div>
+    
     <script src = './index.js' onload="{console.log('wtf')}" type="text/javascript"></script>
 </body>
 </html>

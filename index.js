@@ -4,6 +4,8 @@ const time = document.getElementById('time'),
     focus = document.getElementById('focus'),
     darkModeIcon = document.getElementById('darkModeIcon'),
     darkMode = document.getElementById('darkMode'),
+    sideBarIcon = document.getElementById('sideBarIcon'),
+    visibilityIcon = document.getElementById('visibilityIcon'),
     degree = document.getElementById('degree');
 
 var isDarkMode = false;
@@ -32,6 +34,7 @@ function setBackgroundTime() {
      hour = today.getHours();
 
     if(hour < 12){
+        document.title = "Good Morning 🌅";
         console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/Sunrise1.jpg')" : "url('./images/Sunrise3.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
@@ -39,7 +42,10 @@ function setBackgroundTime() {
         document.body.style.color = isDarkMode ? 'white' : 'black';
         darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
         darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
+        visibilityIcon.style.color = isDarkMode ? 'white' : 'black';
+        sideBarIcon.style.borderColor = isDarkMode ? 'white' : 'black';
     } else if(hour < 18){
+        document.title = "Good Afternoon ☀️";
         console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/Afternoon.jpg')" : "url('./images/Afternoon1.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
@@ -47,7 +53,10 @@ function setBackgroundTime() {
         document.body.style.color = isDarkMode ? 'white' : 'black';
         darkModeIcon.style.color = isDarkMode ? 'white' : 'black';
         darkMode.style.borderColor = isDarkMode ? 'white' : 'black';
+        visibilityIcon.style.color = isDarkMode ? 'white' : 'black';
+        sideBarIcon.style.borderColor = isDarkMode ? 'white' : 'black';
     } else {
+        document.title = "Good Night 🌙";
         console.log('./images/Sunrise1.jpg');
         document.body.style.backgroundImage = isDarkMode ? "url('./images/DarkNight.jpg')" : "url('./images/Night.jpg')"
         document.body.style.backgroundSize = "1920px 1080px"
@@ -55,6 +64,8 @@ function setBackgroundTime() {
         document.body.style.color = isDarkMode ? 'white' : 'white';
         darkModeIcon.style.color = isDarkMode ? 'white' : 'white';
         darkMode.style.borderColor = isDarkMode ? 'white' : 'white';
+        visibilityIcon.style.color = isDarkMode ? 'white' : 'white';
+        sideBarIcon.style.borderColor = isDarkMode ? 'white' : 'white';
     }
 }
 
@@ -130,24 +141,8 @@ let timeZone = 'N/A';
 function changeCF(){
     isTempF = !isTempF
     if(isTempF){
-     //   document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
-     //       "event": "command",
-     //       "func": "playVideo" 
-     //     }), '*');
-     //   document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
-     //       "event": "command",
-     //       "func": "unMute" 
-     //   }), '*');  
         degree.textContent = parseInt(tempF) + String.fromCharCode(176);
     } else{
-      //  document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
-      //      "event": "command",
-      //      "func": "pauseVideo" 
-      //    }), '*');
-      //  document.getElementsByTagName("iframe")[0].contentWindow.postMessage(JSON.stringify({
-      //      "event": "command",
-      //      "func": "mute" 
-      //  }), '*');
         degree.textContent = parseInt(tempC) + String.fromCharCode(176);
     }
 }
@@ -229,11 +224,13 @@ function checkPlaying (song) {
         song.play();
         video.play();
         video.style.opacity = '1';
+        video.style.transition = 'opacity 0.5s ease-in-out';
     } else {
         isPlaying = false;
         song.pause();
         video.pause();
         video.style.opacity = '0';
+        video.style.transition = 'opacity 0.5s ease-in-out';
     }
 }
 
@@ -274,7 +271,7 @@ getDarkMode();
 getName();
 getFocus();
 
-const alert = document.querySelector('.alert'),
+const 
  form = document.querySelector('.todo-form'),
  todo = document.getElementById('todo'),
  submitBtn = document.querySelector('.submit-btn'),
@@ -286,11 +283,163 @@ let editElement,
  editFlag = false,
  editID = '';
 
- form.addEventListener('submit', addItem);
-
+ submitBtn.addEventListener('click', addItem);
+ clearBtn.addEventListener('click', clearItems);
+ window.addEventListener('DOMContentLoaded',setupItems);
+ 
  function addItem(e) {
      e.preventDefault();
      const value = todo.value;
      const id = new Date().getTime().toString()
      console.log(id);
+     if(value !== '' && editFlag === false){
+         createItem(id,value);
+         addToLocalStorage(id,value);
+         setBackToDefault();
+     } else if(value !== '' && editFlag === true){
+         editElement.innerHTML = value;
+         editLocalStorage(editID, value)
+         setBackToDefault();
+     } else {
+     }
  }
+function deleteItem(e){
+    const element = e.currentTarget.parentElement.parentElement;
+    const id = element.dataset.id;
+    list.removeChild(element);
+    setBackToDefault();
+    removeFromLocalStorage(id);
+}
+function editItem(e){
+    const element = e.currentTarget.parentElement.parentElement;
+    editElement = e.currentTarget.previousElementSibling;
+    todo.value = editElement.innerHTML;
+    editFlag = true;
+    editID = element.dataset.id;
+    submitBtn.textContent = 'Edit';
+}
+
+ function clearItems(){
+     const items = document.querySelectorAll('.todo-item');
+     console.log('wtfisgoingon');
+     if(items.length > 0){
+         items.forEach(function(item){
+             list.removeChild(item);
+         });
+     }
+     setBackToDefault();
+     localStorage.removeItem('list');
+ }
+
+ function addToLocalStorage(id, value){
+     console.log('added');
+     const items = { id, value};
+     let itemList = getLocalStorage();
+     console.log(itemList);
+     itemList.push(items);
+     localStorage.setItem('list',JSON.stringify(itemList))
+ }
+function removeFromLocalStorage(id){
+ let itemList = getLocalStorage();
+ itemList = itemList.filter(function(item){
+    if(item.id !== id){
+        return item;
+    }
+ })
+ localStorage.setItem('list', JSON.stringify(itemList));
+}
+
+function editLocalStorage(id, value){
+    let itemList = getLocalStorage();
+    itemList = itemList.map(function(item){
+        if(item.id===id){
+            item.value = value;
+        }
+        return item;
+    });
+    localStorage.setItem('list', JSON.stringify(itemList));
+}
+function getLocalStorage(){
+    return localStorage.getItem('list')?JSON.parse(localStorage.getItem('list')):[];
+}
+ function setBackToDefault(){
+     todo.value = '';
+     editFlag = false;
+     editID = '';
+     submitBtn.textContent = 'Add';
+     console.log('default');
+ }
+ function setupItems(){
+     let itemList = getLocalStorage();
+     if(itemList.length > 0){
+        itemList.forEach(function(item){
+            createItem(item.id,item.value);
+        })
+     }
+ }
+
+ function createItem(id, value){
+    const element = document.createElement('article');
+    element.classList.add('todo-item');
+    const attr = document.createAttribute('data-id');
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.innerHTML = ` <div class='container-element'><p class='title'>${value}</p>
+        <button type="button" class='edit-btn'><i class="material-icons">edit</i></button>
+        <button type='button' class='delete-btn'><i class="material-icons" >check</i></button></div>
+    `;
+    const deleteBtn = element.querySelector('.delete-btn'),
+       editBtn = element.querySelector('.edit-btn'),
+       message = element.querySelector('.title'),
+       divcontainer = element.querySelector('.container-element');
+    
+
+
+    divcontainer.style.display = 'flex';
+    divcontainer.style.outline = '2px solid gray';
+    message.style.width = '80%';
+    message.style.textAlign = 'left';
+    message.style.fontSize = '20px';
+    deleteBtn.style.width = '10%';
+    editBtn.style.width = '10%';
+    
+    deleteBtn.style.float = 'right';
+    editBtn.style.float = 'right';
+
+
+    deleteBtn.addEventListener('click',deleteItem);
+    editBtn.addEventListener('click',editItem);
+    list.appendChild(element);
+ }
+
+ let isSideBarOpen = false;
+ document.querySelector('.todo-all-container').style.display = 'none'
+ /* Open the sidenav */
+function changeSideBar() {
+    isSideBarOpen = !isSideBarOpen;
+    if(isSideBarOpen){
+        document.getElementById("mySidenav").style.width = "30vw";
+        document.querySelector('.todo-all-container').style.opacity = '1';
+        document.querySelector('.todo-all-container').style.transition = 'opacity 0.5s ease-in-out';
+        window.setTimeout(function(){
+            document.querySelector('.todo-all-container').style.display = 'block'
+        }, 500);     
+    } else{
+        document.getElementById("mySidenav").style.width = "40px"; 
+        document.querySelector('.todo-all-container').style.display = 'none'
+        document.querySelector('.todo-all-container').style.opacity = '0';      
+    }
+  }
+let todoHeader = localStorage.getItem('header') ? localStorage.getItem('header') : "ToDo";
+document.getElementById('ToDoHeader').innerHTML = todoHeader;
+function toggleHeader(){
+    if(todoHeader === 'ToDo'){
+        todoHeader = 'Goals';
+        document.getElementById('ToDoHeader').innerHTML = 'Goals';
+        localStorage.setItem('header' , 'Goals');
+    } else{
+        todoHeader = 'ToDo';
+        document.getElementById('ToDoHeader').innerHTML = 'ToDo';
+        localStorage.setItem('header' , 'ToDo');
+    }
+}
