@@ -8,6 +8,7 @@
 ### Used 2 apis to pull the weather and location.
 ### The sidebar list is stored in localStorage.
 ### Future changes would include: Preloading video sources, Adding a login and storing data in a database would be interesting.
+### Putting down this project for now so I can focus on new projects :)
 ### Current home page
 ![First Mockup](https://github.com/MatthewBroyles/LandingPage/blob/main/images/LandingPageBase.PNG?raw=true)
 ### Side bar with todo list
